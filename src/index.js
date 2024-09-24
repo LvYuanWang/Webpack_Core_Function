@@ -1,6 +1,10 @@
-import a from './a.js';
-import $ from 'jquery'; // webpack会将jquery中所有的内容打包到main.js中，所以最后这里引入的jquery是不参与运行的
-console.log($);
+import common from './commonjs';
+const es6a = require('./es6a');
+import $ from 'jquery';
 
-console.log(a);
-console.log('index.js file');
+console.log(common);
+console.log(es6a.a, es6a.b, es6a.default);
+
+console.log(common.version, common.description);
+
+console.log($);
