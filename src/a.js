@@ -1,4 +1,3 @@
-export default "a";
+module.exports = "a";
 
-import b from "./b.js";
-b();
+console.log('a.js file')
