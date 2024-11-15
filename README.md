@@ -1,41 +1,17 @@
-# webpack编译结果分析
+# 配置文件
 
-``` js
-(function (modulesObject) {
-  var cacheData = {}; // 缓存数据
+webpack提供的cli支持很多的参数，例如```--mode```，但更多的时候，我们会使用更加灵活的配置文件来控制webpack的行为
 
-  function __webpack_require_(moduleId) {
-    // 判断缓存区是否有该数据
-    if (cacheData[moduleId]) {
-      return cacheData[moduleId];
-    }
+默认情况下，webpack会读取```webpack.config.js```文件作为配置文件，但也可以通过CLI参数```--config```来指定某个配置文件
 
-    const func = modulesObject[moduleId];
-    const module = {
-      exports: {}
-    }
-    func(module, module.exports, __webpack_require_);
-    const moduleValue = module.exports;
+配置文件中通过CommonJS模块导出一个对象，对象中的各种属性对应不同的webpack配置
 
-    cacheData[moduleId] = moduleValue;
-    return moduleValue;
-  }
+**注意：配置文件中的代码，必须是有效的node代码**
 
-  __webpack_require_("./src/index.js");
-})({
-  "./src/a.js": function (module, exports) {
-    // module.exports = "a";
-    // console.log('a.js file')
-    // eval(): 表示执行括号中的代码字符串, 特点是代码字符串中的代码会被当做正常的代码执行, 报错的话会报错在代码字符串中
-    eval("module.exports = \"a\"\nconsole.log('a.js file')\n//# sourceURL=webpack: ///./src/a.js?"); // sourceURL: 用于调试, 表示当前代码的来源
-  },
-  "./src/index.js": function (module, exports, require) {
-    // console.log('index.js file');
-    // const a = require('./src/a.js');
-    // a.abc();
-    // console.log(a);
-    // eval(): 表示执行括号中的代码字符串, 特点是代码字符串中的代码会被当做正常的代码执行, 报错的话会报错在代码字符串中
-    eval("console.log('index.js file')\nconst a = require(/*! ./a */ './src/a.js')\na.abc();\nconsole.log(a)\n//# sourceURL=webpack:///./src/index.js?");
-  }
-})
-```
+当命令行参数与配置文件中的配置出现冲突时，以命令行参数为准。
+
+**基本配置：**
+
+1. mode：编译模式，字符串，取值为development或production，指定编译结果代码运行的环境，会影响webpack对编译结果代码格式的处理
+2. entry：入口，字符串（后续会详细讲解），指定入口文件
+3. output：出口，对象（后续会详细讲解），指定编译结果文件
