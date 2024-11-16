@@ -1,4 +1,8 @@
-export default "a";
+console.log('a.js');
 
-import b from "./b.js";
-b();
+
+
+const abc = null;
+
+console.log('a module');
+abc.result();
