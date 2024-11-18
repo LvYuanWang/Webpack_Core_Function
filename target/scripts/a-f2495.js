@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -114,19 +114,18 @@ module.exports = 'b';
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ 0:
+/*!***********************************!*\
+  !*** multi ./src/a.js ./src/b.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-console.log("index");
+__webpack_require__(/*! ./src/a.js */"./src/a.js");
+module.exports = __webpack_require__(/*! ./src/b.js */"./src/b.js");
 
-__webpack_require__(/*! ./a */ "./src/a.js");
-__webpack_require__(/*! ./b */ "./src/b.js");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=a-f2495.js.map
