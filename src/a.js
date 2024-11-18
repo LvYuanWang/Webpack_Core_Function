@@ -1,8 +1,5 @@
-console.log('a.js');
+require("./b");
 
+console.log("a.js file");
 
-
-const abc = null;
-
-console.log('a module');
-abc.result();
+module.exports = "a";

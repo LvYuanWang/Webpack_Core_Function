@@ -91,16 +91,26 @@
   !*** ./src/a.js ***!
   \******************/
 /*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./b */ "./src/b.js");
+
+console.log("a.js file");
+
+module.exports = "a";
+
+/***/ }),
+
+/***/ "./src/b.js":
+/*!******************!*\
+  !*** ./src/b.js ***!
+  \******************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('a.js');
+console.log('b.js file');
 
-
-
-const abc = null;
-
-console.log('a module');
-abc.result();
+module.exports = 'b';
 
 /***/ }),
 
@@ -111,9 +121,10 @@ abc.result();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./a */ "./src/a.js");
+console.log("index");
 
-console.log("index module");
+__webpack_require__(/*! ./a */ "./src/a.js");
+__webpack_require__(/*! ./b */ "./src/b.js");
 
 /***/ })
 
