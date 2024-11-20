@@ -86,19 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/assets/index.css":
+/***/ "./src/assets/image.jpg":
 /*!******************************!*\
-  !*** ./src/assets/index.css ***!
+  !*** ./src/assets/image.jpg ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-
-    var style = document.createElement("style");
-    style.innerHTML = "body {\r\n  background-color: #000;\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 2vw;\r\n}\r\n\r\n.box {\r\n  background-color: #f00;\r\n  margin: 10px;\r\n  padding: 20px;\r\n  text-align: center;\r\n}";
-    document.head.appendChild(style);
-    module.exports = "body {\r\n  background-color: #000;\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 2vw;\r\n}\r\n\r\n.box {\r\n  background-color: #f00;\r\n  margin: 10px;\r\n  padding: 20px;\r\n  text-align: center;\r\n}";
-  
+eval("module.exports = \"560c5.jpg\"\n\n//# sourceURL=webpack:///./src/assets/image.jpg?");
 
 /***/ }),
 
@@ -109,18 +104,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const styleCode = __webpack_require__(/*! ./assets/index.css */ "./src/assets/index.css");
-
-console.log("index.js file");
-
-var div = document.createElement("div");
-div.innerHTML = "Hello Webpack";
-div.classList.add("box");
-document.body.appendChild(div);
-
-console.log(styleCode);
+eval("const imagePath = __webpack_require__(/*! ./assets/image.jpg */ \"./src/assets/image.jpg\");\r\n\r\nconsole.log(\"index.js file\");\r\n\r\nvar img = document.createElement(\"img\");\r\nimg.src = imagePath;\r\nimg.style = \"width: 50vw; height: 35vw;\";\r\ndocument.body.appendChild(img);\r\n\r\nconsole.log(imagePath);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map

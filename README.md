@@ -1,3 +1,3 @@
-# loader practice
+# loader handle image
 
-使用loader解决webpack样式的处理
+使用loader处理图片
