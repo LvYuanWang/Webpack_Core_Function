@@ -1,14 +1,31 @@
-var path = require("path");
-
 module.exports = {
   mode: "development",
-  entry: {
-    main: "./src/index.js", // 属性名: chunk的名称, 属性值: 入口模块(启动模块)
-    a: "./src/a.js"  // 一个chunk中可以包含多个模块, 会将多个模块合并到一个chunk中
-  },
-  output: {
-    path: path.resolve(__dirname, "target"),  // 必须配置一个绝对路径, 表示资源输出的目录
-    filename: "[name]-[chunkhash:5].js" // 配置的是chunk资源合并后的js文件名,可以配置name,hash规则等
-  },
-  devtool: "source-map"
+  // entry: "./src/testIndex.js",
+  module: { // 处理模块配置
+    rules: [  // 规则
+      // 规则是从下往上执行的
+      {
+        test: /testIndex\.js$/, // 匹配资源文件的规则, 只能使用正则表达式
+        // 写法1
+        // use: [  // 匹配到资源文件后，使用哪些规则模块进行处理
+        //   {
+        //     loader: "./loaders/test-loader.js", // 使用的loader模块路径, 该字符串会被放置到require中
+        //     options: {
+        //       changeVar: "未知数"
+        //     } // 向对应的loader传递的参数
+        //   }
+        // ]
+        // 写法2-简写
+        use: ["./loaders/test-loader.js?changeBeforeText=输出&changeAfterText=console.log", "./loaders/test-loader.js?changeBeforeText=未知数&changeAfterText=var", "./loaders/test-loader.js?changeBeforeText=导入&changeAfterText=require", "./loaders/test-loader.js?changeBeforeText=提醒&changeAfterText=alert"]
+      }, // 规则1
+      {
+        test: /index\.js$/,
+        use: ["./loaders/loader1.js", "./loaders/loader2.js"]
+      }, // 规则2
+      {
+        test: /\.js$/,
+        use: ["./loaders/loader3.js", "./loaders/loader4.js"]
+      }, // 规则3
+    ]
+  }
 }
