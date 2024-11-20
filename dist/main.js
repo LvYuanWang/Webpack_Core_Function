@@ -86,14 +86,19 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/a.js":
-/*!******************!*\
-  !*** ./src/a.js ***!
-  \******************/
+/***/ "./src/assets/index.css":
+/*!******************************!*\
+  !*** ./src/assets/index.css ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log(\"a.js file\");\n\n//# sourceURL=webpack:///./src/a.js?");
+
+    var style = document.createElement("style");
+    style.innerHTML = "body {\r\n  background-color: #000;\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 2vw;\r\n}\r\n\r\n.box {\r\n  background-color: #f00;\r\n  margin: 10px;\r\n  padding: 20px;\r\n  text-align: center;\r\n}";
+    document.head.appendChild(style);
+    module.exports = "body {\r\n  background-color: #000;\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 2vw;\r\n}\r\n\r\n.box {\r\n  background-color: #f00;\r\n  margin: 10px;\r\n  padding: 20px;\r\n  text-align: center;\r\n}";
+  
 
 /***/ }),
 
@@ -104,8 +109,18 @@ eval("console.log(\"a.js file\");\n\n//# sourceURL=webpack:///./src/a.js?");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log(\"index.js file\");\r\n\r\n__webpack_require__(/*! ./a */ \"./src/a.js\");\n\n//# sourceURL=webpack:///./src/index.js?");
+const styleCode = __webpack_require__(/*! ./assets/index.css */ "./src/assets/index.css");
+
+console.log("index.js file");
+
+var div = document.createElement("div");
+div.innerHTML = "Hello Webpack";
+div.classList.add("box");
+document.body.appendChild(div);
+
+console.log(styleCode);
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=main.js.map
