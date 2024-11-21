@@ -1,3 +1,9 @@
+const FileListPlugin = require("./plugins/FileListPlugin");
+
 module.exports = {
-  // mode: "production",
+  mode: "development",
+  devtool: "source-map",
+  plugins: [
+    new FileListPlugin("fileList.md")
+  ]
 }
