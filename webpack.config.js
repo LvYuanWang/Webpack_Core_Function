@@ -1,3 +1,9 @@
+const MyPlugin = require("./plugins/myPlugin");
+
 module.exports = {
-  // mode: "production",
+  mode: "development",
+  watch: true,
+  plugins: [
+    new MyPlugin()
+  ]
 }
